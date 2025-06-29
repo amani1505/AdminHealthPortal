@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import {
   Dialog,
@@ -16,7 +15,7 @@ export interface CrudModalProps {
   title: string;
   description?: string;
   children: ReactNode;
-  onSubmit: () => void;
+  onSubmit: (e?: React.FormEvent) => void;
   onCancel?: () => void;
   submitText?: string;
   cancelText?: string;
@@ -57,7 +56,7 @@ export function CrudModal({
           <Button variant="outline" onClick={handleCancel} disabled={isSubmitting}>
             {cancelText}
           </Button>
-          <Button onClick={onSubmit} disabled={isSubmitting}>
+          <Button onClick={(e) => onSubmit(e)} disabled={isSubmitting}>
             {isSubmitting ? 'Saving...' : submitText}
           </Button>
         </DialogFooter>
